@@ -64,17 +64,11 @@ if command -v msfconsole &> /dev/null; then
     exit 0
 fi
 
-# Install prerequisites
-# sudo apt install postgresql postgresql-contrib
-# sudo systemctl enable postgresql --now
-
 # Install Metasploit
 curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall
 chmod 755 msfinstall
 ./msfinstall
-
-# Initialize the database
-#sudo msfdb init
+msfdb init # Initialize the database
 
 # Check if Metasploit is installed
 if command -v msfconsole &> /dev/null; then
