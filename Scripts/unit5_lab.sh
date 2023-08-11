@@ -6,7 +6,7 @@ red='\033[0;31m'
 echo "[UNIT 5 LAB] Starting script..."
 
 # Check if vt-cli is installed
-if command -v vt-cli >/dev/null 2>&1 ; then
+if command -v vt >/dev/null 2>&1 ; then
     echo -e "${green}[UNIT 5 LAB]${none} VirusTotal CLI (vt-cli) already installed."
     exit 0
 fi
@@ -19,8 +19,6 @@ cd vt-cli
 if ! command -v go >/dev/null 2>&1 ; then
     echo -e "[UNIT 5 LAB] Installing Go..."
     sudo snap install go  --classic
-    export GOBIN=`go env GOPATH`/bin
-    export PATH=$PATH:$GOBIN
 fi
 # Install make if not already on system
 if ! command -v make >/dev/null 2>&1 ; then
@@ -30,12 +28,15 @@ fi
 
 # Make the vt-cli installation and cleanup installation files
 echo -e "[UNIT 5 LAB] Running vt-cli Makefile..."
+make
 make install
-#cd ..
-#rm -rf vt-cli
+export GOBIN=`go env GOPATH`/bin
+export PATH=$PATH:$GOBIN
+cd ..
+rm -rf vt-cli
 
 # Check if vt-cli is installed
-if command -v vt-cli >/dev/null 2>&1 ; then
+if command -v vt >/dev/null 2>&1 ; then
     echo -e "${green}[UNIT 5 LAB]${none} VirusTotal CLI (vt-cli) successfully installed."
     exit 0
 else
