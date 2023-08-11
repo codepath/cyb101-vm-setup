@@ -24,10 +24,12 @@ if ! command -v go >/dev/null 2>&1 ; then
 fi
 # Install make if not already on system
 if ! command -v make >/dev/null 2>&1 ; then
+    echo -e "[UNIT 5 LAB] Installing make..."
     sudo apt install -y make
 fi
 
 # Make the vt-cli installation and cleanup installation files
+echo -e "[UNIT 5 LAB] Running vt-cli Makefile..."
 make install
 cd ..
 rm -rf vt-cli
