@@ -69,10 +69,12 @@ sudo apt install postgresql postgresql-contrib
 sudo systemctl enable postgresql --now
 
 # Install Metasploit
-sudo apt install metasploit-framework
+curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall
+chmod 755 msfinstall
+./msfinstall
 
 # Initialize the database
-sudo msfdb init
+#sudo msfdb init
 
 # Check if Metasploit is installed
 if command -v msfconsole &> /dev/null; then
