@@ -5,22 +5,21 @@ none='\033[0m'
 
 echo "[UNIT 3 LAB] Starting script..."
 
-# Move the crackfiles into the unit3_lab directory
+# Copy the crackfiles into the unit3_lab directory
 if [ -e "$HOME/unit3_lab/crackfiles.zip" ]; then
     echo -e "[UNIT 3 LAB] File crackfiles.zip already found at ~/unit3_lab."
 else
-    echo "[UNIT 3 LAB] Moving files..."
     if [ -e "$HOME/Files/unit_3/crackfiles.zip" ]; then
-        mkdir "$HOME/unit3_lab"
-        echo "[UNIT 3 LAB] Moving crackfiles.zip to unit3_lab/crackfiles.zip..."
-        sudo mv "$HOME/Files/unit-3/crackfiles.zip" "$HOME/unit3_lab/crackfiles.zip"
+        mkdir -p "$HOME/unit3_lab"
+        echo "[UNIT 3 LAB] Copying crackfiles.zip to unit3_lab/crackfiles.zip..."
+        sudo cp "$HOME/Files/unit_3/crackfiles.zip" "$HOME/unit3_lab/crackfiles.zip"
     else
         echo -e "${red}[UNIT 3 LAB]${none} Error: File ~/Files/unit_3/crackfiles.zip does not exist."
         exit 1
     fi
-    # Verify move was successful
+    # Verify copy was successful
     if ! [ "$HOME/unit3_lab/crackfiles.zip" ]; then
-        echo -e "${red}[UNIT 3 LAB]${none} Error: Could not move crackfiles.zip to unit_3/crackfiles.zip"
+        echo -e "${red}[UNIT 3 LAB]${none} Error: Could not copy crackfiles.zip to unit_3/crackfiles.zip"
         exit 1
     fi
 fi
