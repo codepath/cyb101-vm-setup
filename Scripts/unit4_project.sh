@@ -39,16 +39,20 @@ else
 fi
 
 # Install the docker image
-docker run --name metasploitable -it tleemcjr/metasploitable2:latest sh -c "/bin/services.sh && bash"
-
-# Check if the docker image is running
-if docker ps | grep &>/dev/null '\bmetasploitable\b'; then
-    echo -e "${green}[UNIT 4 PROJECT]${none} Metasploitable is now running."
+if sudo docker ps -a | grep &>/dev/null '\bmetasploitable\b'; then
+    echo -e "${green}[UNIT 4 PROJECT]${none} Metasploitable already running."
 else
-    docker start -ai metasploitable
-    if ! docker ps | grep &>/dev/null '\bmetasploitable\b'; then
-        echo -e "${red}[UNIT 4 PROJECT]${none} ERROR: Docker image metasploitable did not start!"
-        exit 1
+    sudo docker run --name metasploitable -it tleemcjr/metasploitable2:latest sh -c "/bin/services.sh && bash"
+    
+    # Check if the docker image is running
+    if sudo docker ps -a | grep &>/dev/null '\bmetasploitable\b'; then
+        echo -e "${green}[UNIT 4 PROJECT]${none} Metasploitable is now running."
+    else
+        sudo docker start -ai metasploitable
+        if ! sudo docker ps -a | grep &>/dev/null '\bmetasploitable\b'; then
+            echo -e "${red}[UNIT 4 PROJECT]${none} ERROR: Docker image metasploitable did not start!"
+            exit 1
+        fi
     fi
 fi
 
