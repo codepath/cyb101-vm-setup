@@ -31,8 +31,8 @@ fi
 # Make the vt-cli installation and cleanup installation files
 echo -e "[UNIT 5 LAB] Running vt-cli Makefile..."
 make install
-cd ..
-rm -rf vt-cli
+#cd ..
+#rm -rf vt-cli
 
 # Check if vt-cli is installed
 if command -v vt-cli >/dev/null 2>&1 ; then
