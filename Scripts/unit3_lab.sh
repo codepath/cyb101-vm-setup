@@ -10,7 +10,7 @@ if [ -e "$HOME/unit3_lab/crackfiles.zip" ]; then
     echo -e "[UNIT 3 LAB] File crackfiles.zip already found at ~/unit3_lab."
 else
     if [ -e "$HOME/Files/unit_3/crackfiles.zip" ]; then
-        sudo mv ~/Files/unit-3/crackfiles.zip "$HOME/unit3_lab/crackfiles.zip"
+        sudo mv "$HOME/Files/unit-3/crackfiles.zip" "$HOME/unit3_lab/crackfiles.zip"
         echo "[UNIT 3 LAB] Moved crackfiles.zip to ~/unit3_lab/crackfiles.zip"
     else
         echo -e "${red}[UNIT 3 LAB]${none} Error: File ~/Files/unit_3/crackfiles.zip does not exist."
