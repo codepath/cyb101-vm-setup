@@ -11,15 +11,16 @@ if [ -e "$HOME/unit3_lab/crackfiles.zip" ]; then
 else
     echo "[UNIT 3 LAB] Moving files..."
     if [ -e "$HOME/Files/unit_3/crackfiles.zip" ]; then
+        mkdir "$HOME/unit3_lab"
+        echo "[UNIT 3 LAB] Moving crackfiles.zip to unit3_lab/crackfiles.zip..."
         sudo mv "$HOME/Files/unit-3/crackfiles.zip" "$HOME/unit3_lab/crackfiles.zip"
-        echo "[UNIT 3 LAB] Moved crackfiles.zip to ~/unit3_lab/crackfiles.zip"
     else
         echo -e "${red}[UNIT 3 LAB]${none} Error: File ~/Files/unit_3/crackfiles.zip does not exist."
         exit 1
     fi
     # Verify move was successful
     if ! [ "$HOME/unit3_lab/crackfiles.zip" ]; then
-        echo -e "${red}[UNIT 3 LAB]${none} Error: Could not move crackfiles.zip to ~/Files/unit_3/crackfiles.zip"
+        echo -e "${red}[UNIT 3 LAB]${none} Error: Could not move crackfiles.zip to unit_3/crackfiles.zip"
         exit 1
     fi
 fi
