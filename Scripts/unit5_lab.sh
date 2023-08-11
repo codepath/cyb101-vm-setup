@@ -14,7 +14,7 @@ fi
 echo -e "[UNIT 5 LAB] Installing VirusTotal CLI..."
 git clone https://github.com/VirusTotal/vt-cli
 cd vt-cli
-sudo apt install golang
+sudo apt install -y golang make
 make install
 export GOBIN=`go env GOPATH`/bin
 export PATH=$PATH:$GOBIN
