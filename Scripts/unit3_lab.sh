@@ -21,6 +21,8 @@ else
     if ! [ "$HOME/unit3/crackfiles.zip" ]; then
         echo -e "${red}[UNIT 3 LAB]${none} Error: Could not copy crackfiles.zip to unit3/crackfiles.zip"
         exit 1
+    else
+        echo -e "${green}[UNIT 3 LAB]${none} File crackfiles.zip copied successfully."
     fi
 fi
 

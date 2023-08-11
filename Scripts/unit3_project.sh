@@ -21,6 +21,8 @@ else
     if ! [ "$HOME/unit3/cp_leak.txt" ]; then
         echo -e "${red}[UNIT 3 PROJECT]${none} Error: Could not copy cp_leak.txt to unit3/cp_leak.txt"
         exit 1
+    else
+        echo -e "${green}[UNIT 3 PROJECT]${none} File cp_leak.txt copied successfully."
     fi
 fi
 
