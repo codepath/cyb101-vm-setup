@@ -7,7 +7,7 @@ echo "[UNIT 3 PROJECT] Starting script..."
 
 # Copy the required file into the unit3 directory
 if [ -e "$HOME/unit3/cp_leak.txt" ]; then
-    echo -e "[UNIT 3 PROJECT] File cp_leak.txt already found at ~/unit3."
+    echo -e "${green}[UNIT 3 PROJECT]${none} File cp_leak.txt already found at ~/unit3."
 else
     if [ -e "$HOME/Files/unit3/cp_leak.txt" ]; then
         mkdir -p "$HOME/unit3"

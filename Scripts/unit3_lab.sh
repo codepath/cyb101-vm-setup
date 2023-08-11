@@ -7,7 +7,7 @@ echo "[UNIT 3 LAB] Starting script..."
 
 # Copy the required file into the unit3 directory
 if [ -e "$HOME/unit3/crackfiles.zip" ]; then
-    echo -e "[UNIT 3 LAB] File crackfiles.zip already found at ~/unit3."
+    echo -e "${green}[UNIT 3 LAB]${none} File crackfiles.zip already found at ~/unit3."
 else
     if [ -e "$HOME/Files/unit3/crackfiles.zip" ]; then
         mkdir -p "$HOME/unit3"
