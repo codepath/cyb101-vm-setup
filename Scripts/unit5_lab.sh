@@ -15,23 +15,20 @@ echo -e "[UNIT 5 LAB] Installing VirusTotal CLI..."
 git clone https://github.com/VirusTotal/vt-cli
 cd vt-cli
 
+# Install Go if not already on system
 if ! command -v go >/dev/null 2>&1 ; then
-
-    # Install Go
     echo -e "[UNIT 5 LAB] Installing Go..."
-    sudo add-apt-repository ppa:longsleep/golang-backports
-    sudo apt update
-    sudo apt install -y golang-1.17 
+    sudo snap install go  --classic
     export GOBIN=`go env GOPATH`/bin
     export PATH=$PATH:$GOBIN
 fi
-
+# Install make if not already on system
 if ! command -v make >/dev/null 2>&1 ; then
     sudo apt install -y make
 fi
-make install
 
-# Cleanup
+# Make the vt-cli installation and cleanup installation files
+make install
 cd ..
 rm -rf vt-cli
 
