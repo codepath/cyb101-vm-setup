@@ -32,6 +32,7 @@ make
 make install
 echo 'export GOBIN=`go env GOPATH`/bin' >> ~/.profile
 echo 'export PATH=$PATH:$GOBIN' >> ~/.profile
+source ~/.profile
 cd ..
 rm -rf vt-cli
 
