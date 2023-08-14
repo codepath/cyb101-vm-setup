@@ -2,6 +2,7 @@
 none='\033[0m'
 green='\033[0;32m'
 red='\033[0;31m'
+yellow='\033[1;33m'
 
 echo "[UNIT 5 LAB] Starting script..."
 
@@ -52,3 +53,5 @@ else
     echo -e "${red}[UNIT 5 LAB]${none} Error: VirusTotal CLI (vt-cli) failed to install."
     exit 1
 fi
+
+echo -e "${yellow}[UNIT 5 LAB]${none} REQUIRED: Run "source ~/.profile" or reopen terminal for vt-cli to work."
