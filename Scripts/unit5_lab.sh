@@ -39,6 +39,8 @@ if [[ -z "${GOBIN}" ]]; then
     echo 'export GOBIN=`go env GOPATH`/bin' >> ~/.profile
     echo 'export PATH=$PATH:$GOBIN' >> ~/.profile
     source ~/.profile
+else
+    echo -e "[UNIT 5 LAB] Go is already in path: $GOBIN"
 fi
 
 # Check if vt-cli is installed
