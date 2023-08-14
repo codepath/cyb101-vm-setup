@@ -3,3 +3,41 @@ none='\033[0m'
 yellow='\033[1;33m'
 echo "[UNIT 6 PROJECT] Starting script..."
 echo -e "${yellow}[UNIT 6 PROJECT]${none} WARNING: SCRIPT NOT YET IMPLEMENTED"
+
+# First, check if steghide is installed
+if command -v steghide &> /dev/null; then
+    echo -e "[UNIT 6 PROJECT] Steghide is already installed."
+else
+    sudo apt install -y steghide
+    if ! command -v steghide &> /dev/null; then
+        echo -e "${red}[UNIT 6 PROJECT]${none} ERROR: Steghide did not install!"
+        exit 1
+    fi
+fi
+
+# Create the unit6 folder if it doesn't exist
+if [ ! -d "unit6" ]; then
+    mkdir unit6
+fi
+
+# Copy the files from the unit6 project into the unit6 folder
+# Copy the required file into the unit3 directory
+if [ -e "$HOME/unit6/images.zip" ]; then
+    echo -e "${green}[UNIT 6 PROJECT]${none} File images.zip already found at ~/unit6."
+else
+    if [ -e "$HOME/Files/unit6/images.zip" ]; then
+        mkdir -p "$HOME/unit6"
+        echo "[UNIT 6 PROJECT] Copying images.zip to unit6/images.zip..."
+        sudo cp "$HOME/Files/unit6/images.zip" "$HOME/unit6/images.zip"
+    else
+        echo -e "${red}[UNIT 6 PROJECT]${none} Error: File ~/Files/unit6/images.zip does not exist."
+        exit 1
+    fi
+    # Verify copy was successful
+    if ! [ "$HOME/unit6/images.zip" ]; then
+        echo -e "${red}[UNIT 6 PROJECT]${none} Error: Could not copy images.zip to unit6/images.zip"
+        exit 1
+    else
+        echo -e "${green}[UNIT 6 PROJECT]${none} File images.zip copied successfully."
+    fi
+fi

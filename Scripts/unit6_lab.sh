@@ -1,5 +1,5 @@
 #!/bin/bash
 none='\033[0m'
-yellow='\033[1;33m'
+green='\033[0;32m'
 echo "[UNIT 6 LAB] Starting script..."
-echo -e "${yellow}[UNIT 6 LAB]${none} WARNING: SCRIPT NOT YET IMPLEMENTED"
+echo -e "${green}[UNIT 6 LAB]${none} N/A - Nothing required for this lab."
