@@ -48,10 +48,10 @@ fi
 # Check if vt-cli is installed
 if command -v vt >/dev/null 2>&1 ; then
     echo -e "${green}[UNIT 5 LAB]${none} VirusTotal CLI (vt-cli) successfully installed."
+    echo -e "${yellow}[UNIT 5 LAB]${none} REQUIRED: Run "source ~/.profile" or reopen terminal for vt-cli to work."
     exit 0
 else
     echo -e "${red}[UNIT 5 LAB]${none} Error: VirusTotal CLI (vt-cli) failed to install."
     exit 1
 fi
 
-echo -e "${yellow}[UNIT 5 LAB]${none} REQUIRED: Run "source ~/.profile" or reopen terminal for vt-cli to work."
