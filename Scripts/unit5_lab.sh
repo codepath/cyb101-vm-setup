@@ -30,8 +30,8 @@ fi
 echo -e "[UNIT 5 LAB] Running vt-cli Makefile..."
 make
 make install
-export GOBIN=`go env GOPATH`/bin
-export PATH=$PATH:$GOBIN
+echo 'export GOBIN=`go env GOPATH`/bin' >> ~/.profile
+echo 'export PATH=$PATH:$GOBIN' >> ~/.profile
 cd ..
 rm -rf vt-cli
 

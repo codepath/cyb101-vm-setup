@@ -1,12 +1,11 @@
 #!/bin/bash
 none='\033[0m'
-yellow='\033[1;33m'
+green='\033[0;32m'
 echo "[UNIT 6 PROJECT] Starting script..."
-echo -e "${yellow}[UNIT 6 PROJECT]${none} WARNING: SCRIPT NOT YET IMPLEMENTED"
 
 # First, check if steghide is installed
 if command -v steghide &> /dev/null; then
-    echo -e "[UNIT 6 PROJECT] Steghide is already installed."
+    echo -e "${green}[UNIT 6 PROJECT]${none} Steghide is already installed."
 else
     sudo apt install -y steghide
     if ! command -v steghide &> /dev/null; then
@@ -38,6 +37,10 @@ else
         echo -e "${red}[UNIT 6 PROJECT]${none} Error: Could not copy images.zip to unit6/images.zip"
         exit 1
     else
+        # Unzip the images.zip file
+        cd ~/unit6
+        unzip images.zip
         echo -e "${green}[UNIT 6 PROJECT]${none} File images.zip copied successfully."
     fi
 fi
+
