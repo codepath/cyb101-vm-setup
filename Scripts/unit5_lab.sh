@@ -30,11 +30,16 @@ fi
 echo -e "[UNIT 5 LAB] Running vt-cli Makefile..."
 make
 make install
-echo 'export GOBIN=`go env GOPATH`/bin' >> ~/.profile
-echo 'export PATH=$PATH:$GOBIN' >> ~/.profile
-source ~/.profile
 cd ..
 rm -rf vt-cli
+
+# Add GOBIN to PATH if not already there
+if [[ -z "${GOBIN}" ]]; then
+    echo -e "[UNIT 5 LAB] Adding Go to path..."
+    echo 'export GOBIN=`go env GOPATH`/bin' >> ~/.profile
+    echo 'export PATH=$PATH:$GOBIN' >> ~/.profile
+    source ~/.profile
+fi
 
 # Check if vt-cli is installed
 if command -v vt >/dev/null 2>&1 ; then
