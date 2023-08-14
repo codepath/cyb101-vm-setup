@@ -15,12 +15,12 @@ else
     echo -e "${green}[UNIT 7 PROJECT]${none} curl installed successfully."
 fi
 
-# Next, check if python is installed
-if command -v python &> /dev/null; then
+# Next, check if python3 is installed
+if command -v python3 &> /dev/null; then
     echo -e "${green}[UNIT 7 PROJECT]${none} python is already installed."
 else
     sudo apt install -y python3
-    if ! command -v python &> /dev/null; then
+    if ! command -v python3 &> /dev/null; then
         echo -e "${red}[UNIT 7 PROJECT]${none} ERROR: python did not install!"
         exit 1
     fi
