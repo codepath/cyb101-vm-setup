@@ -33,14 +33,15 @@ make install
 cd ..
 rm -rf vt-cli
 
-# Add GOBIN to PATH if not already there
-if [[ -z "${GOBIN}" ]]; then
-    echo -e "[UNIT 5 LAB] Adding Go to path..."
+# Add GOBIN to PATH 
+echo -e "[UNIT 5 LAB] Adding Go to path..."
+export GOBIN=`go env GOPATH`/bin
+export PATH=$PATH:$GOBIN
+# Add to ~/.profile if not already there
+if ! grep -q 'export GOBIN=`go env GOPATH`/bin' ~/.profile; then
     echo 'export GOBIN=`go env GOPATH`/bin' >> ~/.profile
     echo 'export PATH=$PATH:$GOBIN' >> ~/.profile
     source ~/.profile
-else
-    echo -e "[UNIT 5 LAB] Go is already in path: $GOBIN"
 fi
 
 # Check if vt-cli is installed
