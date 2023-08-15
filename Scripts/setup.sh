@@ -11,7 +11,7 @@ if [ $status -ne 0 ] ; then
 fi
 read -p "Press any key to continue"
 
-for i in {1..7} ; do
+for i in {1..8} ; do
   # Call the unit*_lab.sh script
   ./Scripts/unit${i}_lab.sh
   
