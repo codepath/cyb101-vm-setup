@@ -24,5 +24,13 @@ else
         echo -e "${red}[UNIT 7 PROJECT]${none} ERROR: python did not install!"
         exit 1
     fi
+    # Next, configure python command
+    if ! command -v python &> /dev/null; then
+        sudo apt install -y python-is-python3
+        if ! command -v python &> /dev/null; then
+            echo -e "${red}[UNIT 7 PROJECT]${none} ERROR: python-is-python3 did not install!"
+            exit 1
+        fi
+    fi
     echo -e "${green}[UNIT 7 PROJECT]${none} python installed successfully."
 fi
