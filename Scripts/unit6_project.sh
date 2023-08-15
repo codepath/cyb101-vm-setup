@@ -15,8 +15,8 @@ else
 fi
 
 # Create the unit6 folder if it doesn't exist
-if [ ! -d "unit6" ]; then
-    mkdir unit6
+if [ ! -d "$HOME/unit6" ]; then
+    mkdir "$HOME/unit6"
 fi
 
 # Copy the files from the unit6 project into the unit6 folder
