@@ -30,7 +30,7 @@ fi
 git clone https://github.com/trustedsec/social-engineer-toolkit/ setoolkit/
 cd setoolkit
 pip3 install -r requirements.txt
-python setup.py
+sudo python setup.py
 
 if ! command -v setoolkit &> /dev/null; then
     echo -e "${red}[UNIT 8 LAB]${none} ERROR: setoolkit did not install!"
