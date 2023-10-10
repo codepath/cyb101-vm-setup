@@ -28,7 +28,7 @@ else
 fi
 
 # Verify John is installed
-if ! command -v john >/dev/null 2>&1 ; then
-    echo -e "${red}[UNIT 3 PROJECT]${none} Error: John is not installed.  Please run Unit 3 Lab script."
+if ! command -v john-the-ripper >/dev/null 2>&1 ; then
+    echo -e "${red}[UNIT 3 PROJECT]${none} Error: John (snap) is not installed.  Please run Unit 3 Lab script."
     exit 1
 fi

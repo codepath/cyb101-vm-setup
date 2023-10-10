@@ -13,6 +13,7 @@ else
         mkdir -p "$HOME/unit3"
         echo "[UNIT 3 LAB] Copying crackfiles.zip to unit3/crackfiles.zip..."
         sudo cp "$HOME/Files/unit3/crackfiles.zip" "$HOME/unit3/crackfiles.zip"
+        sudo chown $USER:$USER "$HOME/unit3/crackfiles.zip"
     else
         echo -e "${red}[UNIT 3 LAB]${none} Error: File ~/Files/unit3/crackfiles.zip does not exist."
         exit 1
@@ -29,7 +30,7 @@ fi
 # Check if the old John needs to be removed
 if command -v john >/dev/null 2>&1 ; then
     echo -e "[UNIT 3 LAB] Removing apt-get John package."
-    sudo apt-get purge john
+    sudo apt-get purge -y john
 fi
 
 # Check if the script needs to run
