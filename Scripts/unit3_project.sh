@@ -13,6 +13,7 @@ else
         mkdir -p "$HOME/unit3"
         echo "[UNIT 3 PROJECT] Copying cp_leak.txt to unit3/cp_leak.txt..."
         sudo cp "$HOME/Files/unit3/cp_leak.txt" "$HOME/unit3/cp_leak.txt"
+        sudo chown $USER:$USER "$HOME/unit3/cp_leak.txt"
     else
         echo -e "${red}[UNIT 3 PROJECT]${none} Error: File ~/Files/unit3/cp_leak.txt does not exist."
         exit 1
@@ -27,7 +28,7 @@ else
 fi
 
 # Verify John is installed
-if ! command -v john >/dev/null 2>&1 ; then
-    echo -e "${red}[UNIT 3 PROJECT]${none} Error: John is not installed.  Please run Unit 3 Lab script."
+if ! command -v john-the-ripper >/dev/null 2>&1 ; then
+    echo -e "${red}[UNIT 3 PROJECT]${none} Error: John (snap) is not installed.  Please run Unit 3 Lab script."
     exit 1
 fi
