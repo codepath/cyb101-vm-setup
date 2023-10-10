@@ -13,6 +13,7 @@ else
         mkdir -p "$HOME/unit3"
         echo "[UNIT 3 PROJECT] Copying cp_leak.txt to unit3/cp_leak.txt..."
         sudo cp "$HOME/Files/unit3/cp_leak.txt" "$HOME/unit3/cp_leak.txt"
+        sudo chown $USER:$USER "$HOME/unit3/cp_leak.txt"
     else
         echo -e "${red}[UNIT 3 PROJECT]${none} Error: File ~/Files/unit3/cp_leak.txt does not exist."
         exit 1

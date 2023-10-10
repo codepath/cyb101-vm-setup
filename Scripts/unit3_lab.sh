@@ -26,20 +26,26 @@ else
     fi
 fi
 
-# Check if the script needs to run
+# Check if the old John needs to be removed
 if command -v john >/dev/null 2>&1 ; then
-    echo -e "${green}[UNIT 3 LAB]${none} John is already installed."
+    echo -e "[UNIT 3 LAB] Removing apt-get John package."
+    sudo apt-get purge john
+fi
+
+# Check if the script needs to run
+if command -v john-the-ripper >/dev/null 2>&1 ; then
+    echo -e "${green}[UNIT 3 LAB]${none} John (snap) is already installed."
     exit 0
 fi
 echo "[UNIT 3 LAB] Installing John..."
 
 # Install John
-sudo apt-get install john -y
+sudo snap install john-the-ripper
 
 # Print output based on whether or not John is installed
-if command -v john >/dev/null 2>&1 ; then
-    echo -e "${green}[UNIT 3 LAB]${none} John installed successfully."
+if command -v john-the-ripper >/dev/null 2>&1 ; then
+    echo -e "${green}[UNIT 3 LAB]${none} John (snap) installed successfully."
 else
-    echo -e "${red}[UNIT 3 LAB]${none} ERROR: John was not installed correctly!"
+    echo -e "${red}[UNIT 3 LAB]${none} ERROR: John (snap) was not installed correctly!"
     exit 1
 fi
