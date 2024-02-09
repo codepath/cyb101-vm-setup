@@ -5,7 +5,7 @@ echo "[UNIT 7 PROJECT] Starting script..."
 
 # First, check if curl is installed
 if command -v curl &> /dev/null; then
-    echo -e "${green}[UNIT 7 PROJECT]${none} curl is already installed."
+    echo -e "$[UNIT 7 PROJECT] curl is already installed."
 else
     sudo apt install -y curl
     if ! command -v curl &> /dev/null; then

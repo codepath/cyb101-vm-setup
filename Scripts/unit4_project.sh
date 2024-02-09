@@ -5,7 +5,19 @@ red='\033[0;31m'
 
 echo "[UNIT 4 PROJECT] Starting script..."
 
-# First, check if docker is installed
+# First, check if curl is installed
+if command -v curl &> /dev/null; then
+    echo -e "[UNIT 7 PROJECT] curl is already installed."
+else
+    sudo apt install -y curl
+    if ! command -v curl &> /dev/null; then
+        echo -e "${red}[UNIT 7 PROJECT]${none} ERROR: curl did not install!"
+        exit 1
+    fi
+    echo -e "${green}[UNIT 7 PROJECT]${none} curl installed successfully."
+fi
+
+# Next, check if docker is installed
 if command -v docker &> /dev/null; then
     echo -e "[UNIT 4 PROJECT] Docker is already installed."
 else
