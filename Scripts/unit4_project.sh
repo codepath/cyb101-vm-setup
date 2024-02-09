@@ -2,6 +2,7 @@
 none='\033[0m'
 green='\033[0;32m'
 red='\033[0;31m'
+yellow='\033[33m'
 
 echo "[UNIT 4 PROJECT] Starting script..."
 
@@ -54,6 +55,7 @@ fi
 if sudo docker ps -a | grep &>/dev/null '\bmetasploitable\b'; then
     echo -e "${green}[UNIT 4 PROJECT]${none} Metasploitable already running."
 else
+    echo -e "${yellow}[UNIT 4 PROJECT]${none} STARTING METASPLOITABLE -- You may need to type 'exit' to return to this script"
     sudo docker run --name metasploitable -it tleemcjr/metasploitable2:latest sh -c "/bin/services.sh && bash"
     
     # Check if the docker image is running
