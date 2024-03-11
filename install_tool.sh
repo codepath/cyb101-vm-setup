@@ -49,7 +49,7 @@ fi
 install_all_scripts() {
     echo "Installing all ${course} scripts..."
     for i in {1..8} ; do
-        install_specific_script "$i"
+        install_specific_unit "$i"
     done
 }
 
@@ -63,9 +63,9 @@ install_specific_unit() {
     cd $dirname
 
     # Download and run Lab script
-    install_specific_script $unit "lab"
+    install_specific_script $unit lab
     # Download and run Project script
-    install_specific_script $unit "project"
+    install_specific_script $unit project
 
     # Move back to the original directory and remove the temporary directory
     cd ..
