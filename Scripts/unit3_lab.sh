@@ -2,28 +2,30 @@
 red='\033[0;31m'
 green='\033[0;32m'
 none='\033[0m'
+scripts_repo="https://raw.githubusercontent.com/codepath/cyb101-vm-setup/main/Files/"
 
 echo "[UNIT 3 LAB] Starting script..."
 
-# Copy the required file into the unit3 directory
+# Download the required files into the unit3 directory
 if [ -e "$HOME/unit3/crackfiles.zip" ]; then
     echo -e "${green}[UNIT 3 LAB]${none} File crackfiles.zip already found at ~/unit3."
 else
-    if [ -e "$HOME/Files/unit3/crackfiles.zip" ]; then
+    # Ensure the unit3 directory exists
+    if [ ! -d "$HOME/unit3" ]; then
         mkdir -p "$HOME/unit3"
-        echo "[UNIT 3 LAB] Copying crackfiles.zip to unit3/crackfiles.zip..."
-        sudo cp "$HOME/Files/unit3/crackfiles.zip" "$HOME/unit3/crackfiles.zip"
-        sudo chown $USER:$USER "$HOME/unit3/crackfiles.zip"
-    else
-        echo -e "${red}[UNIT 3 LAB]${none} Error: File ~/Files/unit3/crackfiles.zip does not exist."
-        exit 1
     fi
+    
+    # Download and configure the file
+    wget "${scripts_repo}unit3/crackfiles.zip" -O "$HOME/unit3/crackfiles.zip"
+    sudo chown $USER:$USER "$HOME/unit3/crackfiles.zip"
+
     # Verify copy was successful
     if ! [ "$HOME/unit3/crackfiles.zip" ]; then
-        echo -e "${red}[UNIT 3 LAB]${none} Error: Could not copy crackfiles.zip to unit3/crackfiles.zip"
+        echo -e "${red}[UNIT 3 LAB]${none} Error: Could not download crackfiles.zip to unit3/crackfiles.zip"
+        echo -e "${red}[UNIT 3 LAB]${none} Try downloading manually from ${scripts_repo}crackfiles.zip and placing in ~/unit3."
         exit 1
     else
-        echo -e "${green}[UNIT 3 LAB]${none} File crackfiles.zip copied successfully."
+        echo -e "${green}[UNIT 3 LAB]${none} File crackfiles.zip downloaded successfully."
     fi
 fi
 
