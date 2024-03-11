@@ -32,6 +32,19 @@ else
     fi
 fi
 
+# Check if wget is installed
+if ! command -v wget &> /dev/null; then
+    echo -e "${red}ERROR: wget is not installed.${none}"
+    read -p "Do you want to install wget? (y/n) " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        sudo apt install -y wget
+    else
+        echo "Exiting the program. Goodbye!"
+        exit 1
+    fi
+fi
+
 # Function to install all scripts
 install_all_scripts() {
     echo "Installing all ${course} scripts..."
