@@ -1,21 +1,19 @@
 # Machine Set-Up
 
-## The Easy Way
+## The Easy Way (`install_tool.sh`)
 
-- **Get a fresh linux VM with the following specs:**
+- **Get a fresh linux VM with the following minimum specs:**
   - Ubuntu Server 20.04 LTS
   - 2 cores
   - 4GB RAM
   - 128GB Standard SSD
 
-- **Download this Repo, extract into `~` so that `~/Scripts` and `~/Files` are valid paths**
-- **From the `~` directory, run script: `./Scripts/setup.sh`**
-  - This will install all the tools and place all the files needed for the course
+- **Download and run the `install_tool.sh` script**
+  - This script will install all the tools and place all the files needed for the course
   - This might take a while (est 30-45m), so open Youtube or something
-  - You will need to press `enter` between each script -- this is so if you need to stop, you can!
-    - The script **is** safe to run multiple times if you need to stop and start again
+  - You will be able to choose between installing all units or just one unit at a time
 
-## The Hard Way
+## The Hard Way (Manual Set-Up)
 
 ### RDP Setup
 
