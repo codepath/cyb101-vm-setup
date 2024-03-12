@@ -4,11 +4,18 @@ green='\033[0;32m'
 red='\033[0;31m'
 yellow='\033[33m'
 course="CYB101"
-scripts_repo="https://raw.githubusercontent.com/codepath/cyb101-vm-setup/main/Scripts/"
+
+branch=${1:-"main"}
+scripts_repo="https://raw.githubusercontent.com/codepath/cyb101-vm-setup/${branch}/Scripts/"
 
 # Welcome message
-echo "Welcome to ${green}CodePath Cybersecurity${none}!"
-echo "This tool will help you set up your environment for the ${course} course."
+echo -e "Welcome to ${green}CodePath Cybersecurity${none}!"
+echo -e "This tool will help you set up your environment for the ${course} course."
+
+if [ "$branch" != "main" ]; then
+    echo -e "${yellow}WARNING: You are using the a non-default branch ${branch}.${none}"
+    echo -e "${yellow}This is intended for development purposes only.${none}"
+fi
 
 # Check if user is running Ubuntu
 if [ -f /etc/os-release ]; then
@@ -47,7 +54,7 @@ fi
 
 # Function to install all scripts
 install_all_scripts() {
-    echo "Installing all ${course} scripts..."
+    echo -e "Installing all ${course} scripts..."
     for i in {1..8} ; do
         install_specific_unit "$i"
     done
@@ -86,16 +93,18 @@ install_specific_script() {
     # Download and run script
     wget "${scripts_repo}${script_name}"
     chmod +x ${script_name}
-    ./${script_name}
+    ./${script_name} ${branch}
 
     # Check the exit status of the script
     status=$?
     if [ $status -ne 0 ] ; then
-        echo "${red}Error:${none} ${script_name} exited with status $status"
+        echo -e "${red}Error:${none} ${script_name} exited with status $status"
         read -p "Do you want to continue anyway? (y/n) " -n 1 -r
         echo
         if [[ ! $REPLY =~ ^[Yy]$ ]]; then
             echo "Exiting the program. Goodbye!"
+            cd ..
+            rm -rf "tmp_$course_${unit}"
             exit 1
         fi       
     fi

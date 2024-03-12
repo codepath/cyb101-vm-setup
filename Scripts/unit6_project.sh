@@ -31,14 +31,16 @@ else
     fi
     
     # Download and configure the file
-    wget "${scripts_repo}unit6/images.zip" -O "$HOME/unit6/images.zip"
-    sudo chown $USER:$USER "$HOME/unit6/images.zip"
+    success=true
+    wget "${scripts_repo}unit6/images.zip" -O "$HOME/unit6/images.zip" || success=false
 
     # Verify copy was successful
-    if ! [ "$HOME/unit6/images.zip" ]; then
+    if [ "$success" = false ]; then
         echo -e "${red}[UNIT 6 PROJECT]${none} Error: Could not download images.zip to unit6/images.zip"
+        echo -e "${red}[UNIT 6 PROJECT]${none} Try downloading manually from ${scripts_repo}unit6/images.zip and placing in ~/unit6."
         exit 1
     else
+        sudo chown $USER:$USER "$HOME/unit6/images.zip"
         # Unzip the images.zip file
         cd ~/unit6
         unzip images.zip

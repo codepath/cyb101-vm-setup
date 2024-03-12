@@ -16,15 +16,16 @@ else
     fi
     
     # Download and configure the file
-    wget "${scripts_repo}unit3/crackfiles.zip" -O "$HOME/unit3/crackfiles.zip"
-    sudo chown $USER:$USER "$HOME/unit3/crackfiles.zip"
+    success=true
+    wget "${scripts_repo}unit3/crackfiles.zip" -O "$HOME/unit3/crackfiles.zip" || success=false
 
     # Verify copy was successful
-    if ! [ "$HOME/unit3/crackfiles.zip" ]; then
+    if [ "$success" = false ]; then
         echo -e "${red}[UNIT 3 LAB]${none} Error: Could not download crackfiles.zip to unit3/crackfiles.zip"
-        echo -e "${red}[UNIT 3 LAB]${none} Try downloading manually from ${scripts_repo}crackfiles.zip and placing in ~/unit3."
+        echo -e "${red}[UNIT 3 LAB]${none} Try downloading manually from ${scripts_repo}unit3/crackfiles.zip and placing in ~/unit3."
         exit 1
     else
+        sudo chown $USER:$USER "$HOME/unit3/crackfiles.zip"
         echo -e "${green}[UNIT 3 LAB]${none} File crackfiles.zip downloaded successfully."
     fi
 fi

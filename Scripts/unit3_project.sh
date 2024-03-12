@@ -16,14 +16,16 @@ else
     fi
     
     # Download and configure the file
-    wget "${scripts_repo}unit3/cp_leak.txt" -O "$HOME/unit3/cp_leak.txt"
-    sudo chown $USER:$USER "$HOME/unit3/cp_leak.txt"
-
+    success=true
+    wget "${scripts_repo}unit3/cp_leak.txt" -O "$HOME/unit3/cp_leak.txt" || success=false
+    
     # Verify copy was successful
-    if ! [ "$HOME/unit3/cp_leak.txt" ]; then
+    if [ "$success" = false ]; then
         echo -e "${red}[UNIT 3 PROJECT]${none} Error: Could not download cp_leak.txt to unit3/cp_leak.txt"
+        echo -e "${red}[UNIT 3 PROJECT]${none} Try downloading manually from ${scripts_repo}unit3/cp_leak.txt and placing in ~/unit3."
         exit 1
     else
+        sudo chown $USER:$USER "$HOME/unit3/cp_leak.txt"
         echo -e "${green}[UNIT 3 PROJECT]${none} File cp_leak.txt download successfully."
     fi
 fi
