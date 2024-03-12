@@ -9,8 +9,10 @@ if command -v firefox &> /dev/null; then
     echo -e "${green}[UNIT 4 LAB]${none} Firefox is already installed."
 else
     sudo apt install -y firefox
-    if ! command -v steghide &> /dev/null; then
+    if ! command -v firefox &> /dev/null; then
         echo -e "${red}[UNIT 4 LAB]${none} ERROR: Firefox did not install!"
         exit 1
+    else
+        echo -e "${green}[UNIT 4 LAB]${none} Firefox installed successfully."
     fi
 fi
