@@ -10,6 +10,7 @@ scripts_repo="https://raw.githubusercontent.com/codepath/cyb101-vm-setup/${branc
 
 # Function to check and perform system updates
 perform_system_updates() {
+
     echo -e "Checking for system updates..."
 
     # Check the last update time by examining the modification time of /var/lib/apt/periodic/update-success-stamp
@@ -19,7 +20,14 @@ perform_system_updates() {
         update_age=$(( (current_time - last_update) / 86400 )) # Convert seconds to days
 
         if [ $update_age -ge 7 ]; then # More than 7 days since last update
-            echo -e "${yellow}It has been more than a week since the last system update.${none}"
+            echo -e "${yellow}INFO:${none} The system needs to update."
+            echo -e "${yellow}INFO:${none} During that time, you will need to leave your machine on and connected to the internet."
+            read -p "Do you want to continue with the update? (y/n) " -n 1 -r 
+            echo
+            if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+                echo "Exiting the program. Goodbye!"
+                exit 1
+            fi
             echo -e "Downloading and running the update script..."
             wget "https://raw.githubusercontent.com/codepath/cyb101-vm-setup/main/Scripts/update.sh" -O update.sh
             chmod +x update.sh
@@ -28,7 +36,14 @@ perform_system_updates() {
             echo -e "${green}System is up-to-date.${none}"
         fi
     else
-        echo -e "${yellow}Update history not found. Proceeding with updates to be safe.${none}"
+        echo -e "${yellow}INFO:${none}No update history found... the system needs to update."
+        echo -e "${yellow}INFO:${none} During that time, you will need to leave your machine on and connected to the internet."
+        read -p "Do you want to continue with update? (y/n) " -n 1 -r 
+        echo
+        if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+            echo "Exiting the program. Goodbye!"
+            exit 1
+        fi
         wget "https://raw.githubusercontent.com/codepath/cyb101-vm-setup/main/Scripts/update.sh" -O update.sh
         chmod +x update.sh
         ./update.sh
