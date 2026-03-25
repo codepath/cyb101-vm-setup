@@ -34,21 +34,19 @@ make install
 cd ..
 rm -rf vt-cli
 
-# Add GOBIN to PATH 
+# Add GOBIN to PATH
 echo -e "[UNIT 5 LAB] Adding Go to path..."
-export GOBIN=`go env GOPATH`/bin
+export GOBIN=$(go env GOPATH)/bin
 export PATH=$PATH:$GOBIN
-# Add to ~/.profile if not already there
-if ! grep -q 'export GOBIN=`go env GOPATH`/bin' ~/.profile; then
-    echo 'export GOBIN=`go env GOPATH`/bin' >> ~/.profile
-    echo 'export PATH=$PATH:$GOBIN' >> ~/.profile
-    source ~/.profile
+# Add to ~/.bashrc if not already there (sources on every new terminal window)
+if ! grep -q 'export GOBIN=$(go env GOPATH)/bin' ~/.bashrc; then
+    echo 'export GOBIN=$(go env GOPATH)/bin' >> ~/.bashrc
+    echo 'export PATH=$PATH:$GOBIN' >> ~/.bashrc
 fi
 
 # Check if vt-cli is installed
 if command -v vt >/dev/null 2>&1 ; then
     echo -e "${green}[UNIT 5 LAB]${none} VirusTotal CLI (vt-cli) successfully installed."
-    echo -e "${yellow}[UNIT 5 LAB]${none} REQUIRED: Run "source ~/.profile" or reopen terminal for vt-cli to work."
     exit 0
 else
     echo -e "${red}[UNIT 5 LAB]${none} Error: VirusTotal CLI (vt-cli) failed to install."
